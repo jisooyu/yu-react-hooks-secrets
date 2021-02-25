@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SecretsForm = (props) => {
+const AddSecretForm = (props) => {
 	const [site, setSite] = useState('');
 	const [id, setId] = useState('');
 	const [pw, setPw] = useState('');
@@ -19,9 +19,9 @@ const SecretsForm = (props) => {
 		setMemo('')
 	};
 	return (
-		<div>
-			<h3 className='header__subtitle'>Secrets Form</h3>
-			<div className='list-header'></div>
+		<div className='content-container'>
+			<h3>Add Secrets Form</h3>
+			
 			<form className='form' onSubmit={handleSubmit}>
 				<label>Site</label>
 				<input
@@ -44,7 +44,7 @@ const SecretsForm = (props) => {
 				<label>PW</label>
 				<input
 					className='text-input'
-					type='text'
+					type='password'
 					value={pw}
 					onChange={(e) => {
 						setPw(e.target.value);
@@ -65,4 +65,4 @@ const SecretsForm = (props) => {
 		</div>
 	);
 };
-export { SecretsForm as default };
+export { AddSecretForm as default };
