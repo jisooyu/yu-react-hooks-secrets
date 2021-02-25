@@ -68,7 +68,7 @@ const SecretsList = () => {
 				</>
 			) : (
 				<>
-					<AddSecretForm onSubmit={addSecrets} />
+					<AddSecretForm addSecrets={addSecrets} />
 				</>
 			)}
 			<div className='content-container'>
