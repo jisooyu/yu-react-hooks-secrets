@@ -10,7 +10,6 @@ const SecretsList = () => {
 	const [currentSecret, setCurrentSecret] = useState([]);
 
 	const addSecrets = ({ site, id, pw, memo }) => {
-		console.log('addSecrets secrets ', secrets);
 		if (secrets) {
 			dispatch({
 				type: 'ADD_SECRET',
@@ -72,7 +71,13 @@ const SecretsList = () => {
 				</>
 			)}
 			<div className='content-container'>
-				<h3>List of Secret</h3>
+				<div className='header'>
+					<div className='header__content'>
+						<div className='header__subtitle'>
+							<h3>List of Secrets</h3>
+						</div>
+					</div>
+				</div>
 				<Secrets editRow={editRow} removeSecret={removeSecret} />
 			</div>
 		</>

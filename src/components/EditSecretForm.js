@@ -23,8 +23,13 @@ const EditSecretForm = (props) => {
 	};
 	return (
 		<div className='content-container'>
-			<h3> Edit Secrets Form</h3>
-			<div className='list-header'></div>
+			<div className='header'>
+				<div className='header__content'>
+					<div className='header__subtitle'>
+						<h3>Edit Secrets Form</h3>
+					</div>
+				</div>
+			</div>
 			<form className='form' onSubmit={handleSubmit}>
 				<label>Site</label>
 				<input

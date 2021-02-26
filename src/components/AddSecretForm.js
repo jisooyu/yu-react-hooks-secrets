@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const AddSecretForm = (props) => {
+const AddSecretForm = ( props ) => {
+	const initialFormState = {site: '', id: '', pw: '', memo:'' };
 	const [currentSecret, setCurrentSecret] = useState([]);
 
 	const handleInputChange = (event) => {
@@ -16,11 +17,17 @@ const AddSecretForm = (props) => {
 			pw: currentSecret.pw,
 			memo: currentSecret.memo,
 		} )
-		setCurrentSecret('')
+		setCurrentSecret( initialFormState)
 	};
 	return (
 		<div className='content-container'>
-			<h3>Add Secrets Form</h3>
+			<div className='header'>
+				<div className='header__content'>
+					<div className='header__subtitle'>
+						<h3>Add Secrets Form</h3>
+					</div>
+				</div>
+			</div>
 
 			<form className='form' onSubmit={handleSubmit}>
 				<label>Site</label>
@@ -55,7 +62,7 @@ const AddSecretForm = (props) => {
 					value={currentSecret.memo}
 					onChange={handleInputChange}
 				></textarea>
-				<input className='button' type='submit' value='Submit' />
+				<button className='button'>Submit</button>
 			</form>
 		</div>
 	);
