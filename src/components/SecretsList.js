@@ -6,9 +6,10 @@ import Secrets from './Secrets';
 
 const SecretsList = () => {
 	const { secrets, dispatch } = useContext(SecretsContext);
-	const [editing, setEditing] = useState(false);
-	const [currentSecret, setCurrentSecret] = useState([]);
-
+	const initialFormState = { site: '', id: '', pw: '', memo: '' };
+	const [currentSecret, setCurrentSecret] = useState(initialFormState);
+	const [editingStatus, setEditingStatus] = useState(false);
+	
 	const addSecrets = ({ site, id, pw, memo }) => {
 		if (secrets) {
 			dispatch({
@@ -29,14 +30,14 @@ const SecretsList = () => {
 			});
 		}
 	};
-	const editRow = (currentSecret) => {
-		setEditing(true);
+	const editRow = ({site, id, pw, memo}) => {
+		setEditingStatus(true);
 
 		setCurrentSecret({
-			site: currentSecret.site,
-			id: currentSecret.id,
-			pw: currentSecret.pw,
-			memo: currentSecret.memo,
+			site,
+			id,
+			pw,
+			memo,
 		});
 	};
 
@@ -51,16 +52,16 @@ const SecretsList = () => {
 				memo,
 			});
 		}
-		setEditing(false);
+		setEditingStatus(false);
 	};
 
 	return (
 		<>
-			{editing ? (
+			{editingStatus ? (
 				<>
 					<EditSecretForm
-						editing={editing}
-						setEditing={setEditing}
+						editingStatus={editingStatus}
+						setEditingStatus={setEditingStatus}
 						currentSecret={currentSecret}
 						editSecrets={editSecrets}
 					/>

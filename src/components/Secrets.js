@@ -10,7 +10,7 @@ const Secrets = ({ editRow, removeSecret }) => {
 			<p>ID:{secret.id}</p>
 			<p>PW:{secret.pw}</p>
 			<p>Memo:{secret.memo}</p>
-			<button className='button' onClick={() => editRow(secret.site, secret.id, secret.pw, secret.memo)}>
+			<button className='button' onClick={ () => editRow( { site:secret.site, id:secret.id, pw:secret.pw, memo:secret.memo })}>
 				Edit
 			</button>
 			<button className='button' onClick={() => removeSecret(secret.site)}>

@@ -15,8 +15,9 @@ const secretsReducers = (state, action) => {
 		case 'REMOVE_SECRET':
 			return state.filter((secret) => secret.site !== action.site);
 		case 'EDIT_SECRET':
+			// id는 변경할 수 없는 구조
 			return state.map((secret) => {
-				if ( secret.site === action.site ) {
+				if ( secret.id === action.id ) {
 					return {
 						...secret,
 						site: action.site,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const AddSecretForm = ( props ) => {
 	const initialFormState = {site: '', id: '', pw: '', memo:'' };
-	const [currentSecret, setCurrentSecret] = useState([]);
+	const [currentSecret, setCurrentSecret] = useState(initialFormState);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
