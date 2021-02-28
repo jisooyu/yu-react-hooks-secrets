@@ -46,7 +46,7 @@ const AddSecretsForm = ({ addSecrets }) => {
 							<label>PW:</label>
 							<input
 								className="text-input"
-								type="text"
+								type="password"
 								name="pw"
 								value={currentSecret.pw}
 								onChange={handleInputChange}
