@@ -1,5 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const SecretsContext = React.createContext()
+const SecretsContext = React.createContext();
 
-export {SecretsContext as default }
+export { SecretsContext as default };

@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import AddSecretsForm from './AddSecretsForm';
-import EditSecretsForm from './EditSecretsForm';
-import Secrets from './Secrets';
 import SecretsContext from '../context/SecretsContext';
+import AddSecretForm from './AddSecretForm';
+import EditSecretForm from './EditSecretForm';
+import Secrets from './Secrets';
 
 const SecretsList = () => {
 	const { secrets, dispatch } = useContext(SecretsContext);
@@ -11,29 +11,34 @@ const SecretsList = () => {
 	const [editingStatus, setEditingStatus] = useState(false);
 
 	const addSecrets = ({ site, id, pw, memo }) => {
-		dispatch({
-			type: 'ADD_SECRET',
-			site,
-			id,
-			pw,
-			memo,
-		});
+		if (secrets) {
+			dispatch({
+				type: 'ADD_SECRET',
+				site,
+				id,
+				pw,
+				memo,
+			});
+		}
+	};
+
+	const removeSecret = (site) => {
+		if (secrets) {
+			dispatch({
+				type: 'REMOVE_SECRET',
+				site,
+			});
+		}
 	};
 
 	const editSecretRow = ({ site, id, pw, memo }) => {
 		setEditingStatus(true);
+
 		setCurrentSecret({
 			site,
 			id,
 			pw,
 			memo,
-		});
-	};
-
-	const removeSecretRow = ({ site }) => {
-		dispatch({
-			type: 'REMOVE_SECRET',
-			site,
 		});
 	};
 
@@ -53,16 +58,26 @@ const SecretsList = () => {
 	return (
 		<>
 			{editingStatus ? (
-				<EditSecretsForm
+				<EditSecretForm
 					setEditingStatus={setEditingStatus}
 					currentSecret={currentSecret}
 					editSecrets={editSecrets}
 				/>
 			) : (
-				<AddSecretsForm addSecrets={addSecrets} />
+				<AddSecretForm addSecrets={addSecrets} />
 			)}
-			<Secrets editSecretRow={editSecretRow} removeSecretRow={removeSecretRow} />
+			<div className="content-container">
+				<div className="header">
+					<div className="header__content">
+						<div className="header__subtitle">
+							<h3>List of Secrets</h3>
+						</div>
+					</div>
+				</div>
+				<Secrets editSecretRow={editSecretRow} removeSecret={removeSecret} />
+			</div>
 		</>
 	);
 };
+
 export { SecretsList as default };
